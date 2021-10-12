@@ -18,7 +18,7 @@ class CreateTransactionDetailsTable extends Migration
             $table->unsignedBigInteger('product_id');
             $table->integer('quantity');
 
-            $table->foreign('transactionHeader_id')->references('id')->on('carts')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('transactionHeader_id')->references('id')->on('transaction_headers')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('product_id')->references('id')->on('products')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });

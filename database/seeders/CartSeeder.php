@@ -1,6 +1,7 @@
 <?php
 
 namespace Database\Seeders;
+use App\Models\Cart;
 
 use Illuminate\Database\Seeder;
 
@@ -13,6 +14,12 @@ class CartSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $userId = [2, 2];
+        $length = count($userId);
+        for($i=0; $i<$length; $i++){
+            Cart::create([
+                'user_id' => $userId[$i]
+            ]);
+        }
     }
 }
