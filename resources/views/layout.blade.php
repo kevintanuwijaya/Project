@@ -9,6 +9,12 @@
     <title>@yield('title')</title>
 
     <style>
+
+        body{
+            padding: 0;
+            margin: 0;
+        }
+
         header,nav{
             height: 18vh;
             width: 100vw;
@@ -16,6 +22,7 @@
 
         main{
             width: 100vw;
+            min-height: 72vh;
             background-color: rgb(204, 217, 226);
         }
 
@@ -27,6 +34,15 @@
         .nav-search{
             height: 10vh;
             background-color: rgb(255, 193, 7);
+        }
+
+        .logo{
+            width: 13vw;
+            height: 13vh;
+        }
+
+        .search-form{
+            padding-right: 1vw;
         }
 
         .search-btn{
@@ -74,8 +90,8 @@
     <header>
         <nav>
             <div class="nav-search d-flex p-3 justify-content-between align-items-center">
-                <img src="" alt="logo" srcset="">
-                <form action="" method="get" class="d-flex">
+                <img class="logo" src="storage/assets/logo.png" alt="logo" srcset="">
+                <form action="" method="get" class="d-flex search-form">
                     <input class="form-control search-input" type="search" placeholder="Search Product..">
                     <img src="storage/assets/search-solid.svg" class="search-btn m-2" alt="search-btn">
                 </form>
