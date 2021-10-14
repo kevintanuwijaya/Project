@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
     <title>@yield('title')</title>
 
@@ -54,6 +55,8 @@
             height: 2vh;
             width: 2vh;
             margin: 1vh 2vh 1vh 2vh;
+            color: white;
+            font-size: 20pt;
         }
 
         .search-input{
@@ -80,7 +83,6 @@
             text-decoration: none;
             color: black;
         }
-
     </style>
 
     @yield('style')
@@ -93,7 +95,7 @@
                 <img class="logo" src="storage/assets/logo.png" alt="logo" srcset="">
                 <form action="" method="get" class="d-flex search-form">
                     <input class="form-control search-input" type="search" placeholder="Search Product..">
-                    <img src="storage/assets/search-solid.svg" class="search-btn m-2" alt="search-btn">
+                    <button type="submit" class="btn btn-link"><i class="bi bi-search search-btn m-2"></i></button> 
                 </form>
             </div>
             <div class="nav-menu nav-menu-bgcolor d-flex justify-content-between align-items-center">
@@ -131,11 +133,17 @@
     <main>
         @yield('main')
     </main>
-    <footer class="footer footer-bgcolor d-flex flex-column justify-content-between align-items-center p-2">
+    <footer class="footer footer-bgcolor d-flex flex-column justify-content-between align-items-center p-3">
         <div>
-            <a href=""><img class="footer-icon" src="storage/assets/facebook-f-brands.png" alt="facebook"></a>
-            <a href=""><img class="footer-icon" src="storage/assets/instagram-brands.png" alt="instagram"></a>
-            <a href=""><img class="footer-icon" src="storage/assets/question-circle-solid.png" alt="help"></a>
+            <a class="footer-icon btn-link-update" href="">
+                <i class="bi bi-facebook"></i>
+            </a>
+            <a class="footer-icon btn-link-update" href="">
+                <i class="bi bi-instagram"></i>
+            </a>
+            <a class="footer-icon btn-link-update" href="">
+                <i class="bi bi-question-circle-fill"></i>
+            </a>
         </div>
         <div>
             <span class="text-white">&copy; 2021 Copyright DY20-1</span>
