@@ -9,8 +9,8 @@ class TransactionDetail extends Model
 {
     use HasFactory;
 
-    public function transactionDetails(){
-        return $this->belongsTo(CartDetail::class);
+    public function transactionHeader(){
+        return $this->belongsTo(TransactionHeader::class);
     }
 
     public function products(){

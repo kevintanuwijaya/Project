@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -14,7 +16,11 @@ class ProductController extends Controller
     public function index()
     {
         //
-        return view('pages.manageproductpage');
+        $products = Product::all();
+
+        $categoris = Category::all();
+
+        return view('pages.manageproductpage',['products'=>$products]);
     }
 
     /**
@@ -60,7 +66,9 @@ class ProductController extends Controller
     public function edit($id)
     {
         //
-        return view('pages.productpage');
+        $product = Product::find($id);
+
+        return view('pages.productpage',['product'=>$product]);
     }
 
     /**
