@@ -67,27 +67,32 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach ($products as $product)
+                    
+
                 <tr>
-                    <td class="item-id">1</td>
+                    <td class="item-id">{{ $product->id }}</td>
                     <td class="item-image">
-                        <img src="storage/assets/lenovo-legion.webp" class="m-1" alt="...">
+                        <img src="storage/product-assets/{{ $product->picture }}" class="m-1" alt="...">
                     </td>
-                    <td class="item-name">[Item Name]</td>
-                    <td class="item-description">[Item Description]</td>
-                    <td class="item-price">[Item Price]</td>
-                    <td class="item-category"></td>
+                    <td class="item-name">{{ $product->name }}</td>
+                    <td class="item-description">{{ $product->description }}</td>
+                    <td class="item-price">{{ $product->price }}</td>
+                    <td class="item-category">{{ $product->category->name }}</td>
                     <td class="item-action">
                         <div class="d-flex">
-                            <form action="" method="post">
-                                <input type="submit" value="Update" class="btn btn-warning">
-                            </form>
-                            <form action="" method="post">
+                            <a href="/product/edit/{{ $product->id }}" type="
+                            button" class="btn btn-warning">Update</a>
+                            <form action="/product/delete/{{ $product->id }}" method="POST">
+                                @csrf
+                                @method("delete")
                                 <input type="submit" value="Delete" class="btn btn-danger">
                             </form>
                         </div>
                     </td>
                 </tr>
 
+                @endforeach
             </tbody>
         </table>
     </div>

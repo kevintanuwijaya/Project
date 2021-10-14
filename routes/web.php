@@ -47,6 +47,8 @@ Route::post('/product/insert',[ProductController::class,'store']);
 
 Route::post('/product/update/{id}',[ProductController::class,'update']);
 
+Route::delete('/product/delete/{id}',[ProductController::class,'destroy']);
+
 Route::get('/products',[ProductController::class,'index']);
 
 Route::get('/product/{id}',[ProductController::class,'show']);
