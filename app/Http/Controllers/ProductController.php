@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -18,7 +19,6 @@ class ProductController extends Controller
         //
         $products = Product::all();
 
-        $categoris = Category::all();
 
         return view('pages.manageproductpage',['products'=>$products]);
     }
@@ -31,7 +31,12 @@ class ProductController extends Controller
     public function create()
     {
         //
-        return view('pages.productpage');
+        $product = null;
+
+        $categories = Category::all();
+
+
+        return view('pages.productpage',['product'=>$product,'categories'=>$categories]);
     }
 
     /**
@@ -43,6 +48,26 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'productname' => 'required|unique:products,name|min:5',
+            'description' => 'required|min:50',
+            'price' => 'required|integer|gt:0',
+            'category' => 'required',
+            'picture' => 'required|mimes:jpg'
+        ]);
+
+        $image_path = Storage::disk('local')->put('public/product-assets',$request->picture);
+        $image_path = explode("/",$image_path);
+
+        Product::create([
+            'category_id' => $request->category,
+            'name' => $request->productname, 
+            'price' => $request->price,
+            'description' => $request->description,
+            'picture' => $image_path[2],
+        ]);
+
+        return redirect('/products');
     }
 
     /**
@@ -68,7 +93,9 @@ class ProductController extends Controller
         //
         $product = Product::find($id);
 
-        return view('pages.productpage',['product'=>$product]);
+        $categories = Category::Where('id','NOT LIKE',$product->category_id)->get();
+
+        return view('pages.productpage',['product'=>$product,'categories' => $categories]);
     }
 
     /**
@@ -81,6 +108,36 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $request->validate([
+            'productname' => 'required|unique:products,name|min:5',
+            'description' => 'required|min:50',
+            'price' => 'required|integer|gt:0',
+            'category' => 'required',
+        ]);
+
+        $product = Product::find($id);
+
+        if($request->picture != null){
+
+
+            $request->validate([
+                'picture' => 'mimes:jpg'
+            ]);
+
+            $image_path = Storage::disk('local')->put('public/product-assets',$request->picture);
+            $image_path = explode("/",$image_path);
+
+            $product->picture = $image_path[2];
+        }
+
+        $product->name = $request->productname;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->category_id = $request->category;
+
+        $product->save();
+
+        return redirect('/product/edit/'.$product->id);
     }
 
     /**
