@@ -5,6 +5,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\ProductController;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +27,10 @@ Route::get('/login', [AuthController::class,'loginPage'] );
 
 Route::get('/register', [AuthController::class,'registerPage']);
 
+Route::post('/login', [AuthController::class,'login'] );
+
+Route::post('/register', [AuthController::class,'register']);
+
 
 //CARTS
 Route::get('/cart',[CartController::class,'index']);
@@ -34,9 +39,13 @@ Route::get('/cart/{id}',[CartController::class,'edit']);
 
 
 //PRODUCT
-Route::get('/product/edit/{id}',[ProductController::class,'create']);
+Route::get('/product/edit/{id}',[ProductController::class,'edit']);
 
-Route::get('/product/insert/{id}',[ProductController::class,'edit']);
+Route::get('/product/insert',[ProductController::class,'create']);
+
+Route::post('/product/insert',[ProductController::class,'store']);
+
+Route::post('/product/update/{id}',[ProductController::class,'update']);
 
 Route::get('/products',[ProductController::class,'index']);
 

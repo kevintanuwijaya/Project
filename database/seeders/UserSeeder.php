@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
                 'role_id' => $roleId[$i],
                 'address' => $address[$i],
                 'email' => $email[$i],
-                'password' => $password[$i]
+                'password' => bcrypt($password[$i]),
             ]);
         }
     }
