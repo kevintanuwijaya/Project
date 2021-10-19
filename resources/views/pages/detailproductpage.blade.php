@@ -24,16 +24,16 @@
             <img src="storage/assets/lenovo-legion.webp" class="w-100 rounded" alt="" srcset="">
         </div>
         <div class="d-flex flex-column detail-info w-50 p-5">
-            <h2>[Nama Barang]</h2>
+            <h2>{{ $product->name }}</h2>
             <hr>
             <h4>Category</h4>
-            <p>[Category]</p>
+            <p>{{ $product->category->name }}</p>
             <hr>
             <h4>Price:</h4>
-            <p>[Category]</p>
+            <p>{{ $product->price }}</p>
             <hr>
             <h4>Description</h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, quibusdam, modi praesentium unde, quod qui consequatur veniam quasi id voluptatibus aliquam vero numquam ducimus magnam. Asperiores tempore alias eligendi neque?</p>
+            <p>{{ $product->description }}</p>
             <hr>
             <form action="" method="post">
                 @csrf
