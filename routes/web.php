@@ -57,9 +57,16 @@ Route::get('/product/{id}',[ProductController::class,'show']);
 //CATEGORY
 Route::get('/categories',[CategoryController::class,'index']);
 
-Route::get('/category/{id}',[CategoryController::class,'edit']);
+Route::get('/category/update/{id}',[CategoryController::class,'edit']);
 
-Route::get('/category',[CategoryController::class,'create']);
+Route::post('/category/update/{id}',[CategoryController::class,'update']);
+
+Route::get('/category/insert',[CategoryController::class,'create']);
+
+Route::post('/category/insert',[CategoryController::class,'store']);
+
+Route::post('/category/delete/{id}',[CategoryController::class,'destroy']);
+
 
 
 //HISTORY
