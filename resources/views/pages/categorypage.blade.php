@@ -23,21 +23,45 @@
             height: 5vh;
         }
 
+        .error-message{
+            color: red;
+        }
+
     </style>
 @endsection
 
 @section('main')
     <div class="edit-category-page d-flex flex-column justify-content-center align-items-center">
         <div class="d-flex flex-column m-4 p-4 form">
-            <h2 class="edit-category-title">Edit Category</h2>
-            <form method="POST" action="">
+
+            @if ($category == null)
+                <h2 class="edit-category-title">Insert New Category</h2>
+            @else
+                <h2 class="edit-category-title">Edit Category</h2>
+            @endif
+            <form method="POST" action="
+            
+                @if ($category == null)
+                    /category/insert 
+                @else
+                    /category/update/{{ $category->id }}
+                @endif
+
+            ">
                 @csrf
                 <div class="form-floating mb-3">
-                    <input name="name" placeholder="Full Name" type="text" id="floatingName" class="form-control"> 
+                    <input name="name" placeholder="Category Name" type="text" id="floatingName" class="form-control" value="@if ($category != null){{ $category->name }}@endif"> 
                     <label for="floatingName">Category Name</label>
+                    @error('name')
+                        <span class="error-message">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="d-flex justify-content-end">
-                    <button type="submit" class="btn btn-warning">Save</button>
+                    @if ($category == null)
+                        <button type="submit" class="btn btn-warning">Add</button>    
+                    @else
+                        <button type="submit" class="btn btn-warning">Save</button>
+                    @endif
                 </div>
             </form>
         </div>

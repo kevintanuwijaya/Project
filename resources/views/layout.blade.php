@@ -108,8 +108,8 @@
                             Manage Product
                         </button>
                         <ul class="dropdown-menu nav-menu-bgcolor" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="btn btn-link text-white btn-link-update" href="#">View Product</a></li>
-                            <li><a class="btn btn-link text-white btn-link-update" href="#">Add Product</a></li>
+                            <li><a class="btn btn-link text-white btn-link-update" href="/products">View Product</a></li>
+                            <li><a class="btn btn-link text-white btn-link-update" href="/product/insert">Add Product</a></li>
                         </ul>
                     </div>
                     <div class="dropdown">
@@ -117,8 +117,8 @@
                             Manage Category
                         </button>
                         <ul class="dropdown-menu nav-menu-bgcolor" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="btn btn-link text-white btn-link-update" href="#">View Category</a></li>
-                            <li><a class="btn btn-link text-white btn-link-update" href="#">Add Category</a></li>
+                            <li><a class="btn btn-link text-white btn-link-update" href="/categories">View Category</a></li>
+                            <li><a class="btn btn-link text-white btn-link-update" href="/category/insert">Add Category</a></li>
                         </ul>
                     </div>
                 </div>
