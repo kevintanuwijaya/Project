@@ -35,7 +35,6 @@
 <div class="home-page">
     <h2 class="text-center">New Product</h2>
     <div class="row row-cols-3">
-
         @foreach ($products as $product)
             <div class="col">
                 <div class="card" style="width: 30vw;">
@@ -54,6 +53,6 @@
     </div>
     <div class="pagination">
         {{ $products->links('pagination::bootstrap-4') }}
-    </div>  
+    </div>
 </div>
 @endsection

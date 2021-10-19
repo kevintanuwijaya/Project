@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\ProductController;
 use App\Models\Product;
+use App\Models\Role;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +31,8 @@ Route::get('/register', [AuthController::class,'registerPage']);
 Route::post('/login', [AuthController::class,'login'] );
 
 Route::post('/register', [AuthController::class,'register']);
+
+Route::get('/logout', [AuthController::class, 'logout']);
 
 
 //CARTS

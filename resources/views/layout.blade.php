@@ -64,7 +64,7 @@
         }
 
         .nav-menu{
-            height: 8vh; 
+            height: 8vh;
         }
 
         .nav-menu-bgcolor, .footer-bgcolor{
@@ -95,7 +95,7 @@
                 <img class="logo" src="storage/assets/logo.png" alt="logo" srcset="">
                 <form action="" method="get" class="d-flex search-form">
                     <input class="form-control search-input" type="search" placeholder="Search Product..">
-                    <button type="submit" class="btn btn-link"><i class="bi bi-search search-btn m-2"></i></button> 
+                    <button type="submit" class="btn btn-link"><i class="bi bi-search search-btn m-2"></i></button>
                 </form>
             </div>
             <div class="nav-menu nav-menu-bgcolor d-flex justify-content-between align-items-center">
@@ -103,33 +103,35 @@
                     <a href=""><button type="button" class="btn btn-link text-white btn-link-update c-w">Home</button></a>
                     <a href=""><button type="button" class="btn btn-link text-white btn-link-update c-w">My Cart</button></a>
                     <a href=""><button type="button" class="btn btn-link text-white btn-link-update c-w">History Transaction</button></a>
-                    <div class="dropdown">
-                        <button class="btn btn-link btn-link-update text-white dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                            Manage Product
-                        </button>
-                        <ul class="dropdown-menu nav-menu-bgcolor" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="btn btn-link text-white btn-link-update" href="/products">View Product</a></li>
-                            <li><a class="btn btn-link text-white btn-link-update" href="/product/insert">Add Product</a></li>
-                        </ul>
-                    </div>
-                    <div class="dropdown">
-                        <button class="btn btn-link btn-link-update text-white dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                            Manage Category
-                        </button>
-                        <ul class="dropdown-menu nav-menu-bgcolor" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="btn btn-link text-white btn-link-update" href="/categories">View Category</a></li>
-                            <li><a class="btn btn-link text-white btn-link-update" href="/category/insert">Add Category</a></li>
-                        </ul>
-                    </div>
+                    @if (Auth::check() && Auth::user()->role_id == 1)
+                        <div class="dropdown">
+                            <button class="btn btn-link btn-link-update text-white dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                Manage Product
+                            </button>
+                            <ul class="dropdown-menu nav-menu-bgcolor" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="btn btn-link text-white btn-link-update" href="/products">View Product</a></li>
+                                <li><a class="btn btn-link text-white btn-link-update" href="/product/insert">Add Product</a></li>
+                            </ul>
+                        </div>
+                        <div class="dropdown">
+                            <button class="btn btn-link btn-link-update text-white dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                Manage Category
+                            </button>
+                            <ul class="dropdown-menu nav-menu-bgcolor" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="btn btn-link text-white btn-link-update" href="/categories">View Category</a></li>
+                                <li><a class="btn btn-link text-white btn-link-update" href="/category/insert">Add Category</a></li>
+                            </ul>
+                        </div>
+                    @endif
                 </div>
                 <div class="m-2">
                     <a href=""><button type="button" class="btn btn-outline-light">Login</button></a>
                     <a href=""><button type="button" class="btn btn-outline-light">Register</button></a>
-                    <a href=""><button type="button" class="btn btn-outline-light">Logout</button></a>
+                    <a href="/logout"><button type="button" class="btn btn-outline-light">Logout</button></a>
                 </div>
             </div>
         </nav>
-    </header>    
+    </header>
     <main>
         @yield('main')
     </main>
