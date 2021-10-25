@@ -14,7 +14,7 @@ class CartSeeder extends Seeder
      */
     public function run()
     {
-        $userId = [2, 2];
+        $userId = [2, 3];
         $length = count($userId);
         for($i=0; $i<$length; $i++){
             Cart::create([
