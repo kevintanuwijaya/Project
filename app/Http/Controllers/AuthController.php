@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Symfony\Contracts\Service\Attribute\Required;
 
 class AuthController extends Controller
@@ -20,6 +22,11 @@ class AuthController extends Controller
         return view('pages.registerpage');
     }
 
+    public function remember(Request $request){
+        $email = $request->input('email');
+        $password = $request->input('password');
+    }
+
     public function login(Request $request)
     {
         $credentials = $request->validate([
@@ -27,9 +34,22 @@ class AuthController extends Controller
             'password' => 'required|min:6',
         ]);
 
+        $remember = $request->input('remember');
+
+
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])){
             // dd($credentials);
+
+            if(!empty($remember)){
+                $email = $request->input('email');
+                $password = $request->input('password');
+
+                $minute = 300;
+                Cookie::queue(Cookie::make('email', $email, $minute));
+                Cookie::queue(Cookie::make('password', $password, $minute));
+            }
             $request->session()->regenerate();
+
 
             return redirect()->intended('/');
         }
@@ -37,6 +57,8 @@ class AuthController extends Controller
             return back()->with('errorLogin', 'Login Failed!');
         }
     }
+
+
 
     public function register(Request $request)
     {

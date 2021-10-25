@@ -125,9 +125,13 @@
                     @endif
                 </div>
                 <div class="m-2">
-                    <a href=""><button type="button" class="btn btn-outline-light">Login</button></a>
+                    @if (!(Auth::check()))
+                        <a href=""><button type="button" class="btn btn-outline-light">Login</button></a>
+                    @endif
                     <a href=""><button type="button" class="btn btn-outline-light">Register</button></a>
-                    <a href="/logout"><button type="button" class="btn btn-outline-light">Logout</button></a>
+                    @if (Auth::check())
+                        <a href="/logout"><button type="button" class="btn btn-outline-light">Logout</button></a>
+                    @endif
                 </div>
             </div>
         </nav>

@@ -22,6 +22,11 @@
         .form-control{
             height: 5vh;
         }
+
+        .errorLabel{
+            color: red;
+        }
+
     </style>
 @endsection
 
@@ -33,9 +38,9 @@
             <form action="/login" method="POST">
                 @csrf
                 <div class="form-floating mb-3">
-                    <input name="email" placeholder="Email" type="email" class="form-control" id="floatingEmail" aria-describedby="emailHelp">
+                    <input name="email" placeholder="Email" type="email" class="form-control" id="floatingEmail" aria-describedby="emailHelp" value="{{Cookie::get('email')}}">
                     <label for="floatingEmail">Email</label>
-                    <div>
+                    <div class="errorLabel">
                         @error('email')
                             <span>
                                 {{ $message }}
@@ -44,9 +49,9 @@
                     </div>
                 </div>
                 <div class="form-floating mb-3">
-                    <input name="password" placeholder="Password" type="password" class="form-control" id="floatingPassword">
+                    <input name="password" placeholder="Password" type="password" class="form-control" id="floatingPassword" value="{{Cookie::get('password')}}">
                     <label for="floatingPassword">Password</label>
-                    <div>
+                    <div class="errorLabel">
                         @error('password')
                             <span>
                                 {{ $message }}

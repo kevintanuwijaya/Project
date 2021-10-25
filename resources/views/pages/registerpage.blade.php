@@ -23,6 +23,10 @@
             height: 5vh;
         }
 
+        .errorLabel{
+            color: red;
+        }
+
     </style>
 @endsection
 
@@ -35,7 +39,7 @@
                 <div class="form-floating mb-3">
                     <input name="fullname" placeholder="Full Name" type="text" id="floatingFullName" class="form-control">
                     <label for="floatingFullName">Full Name</label>
-                    <div>
+                    <div class="errorLabel">
                         @error('fullname')
                             <span>
                                 {{ $message }}
@@ -53,7 +57,7 @@
                         <input type="radio" name="gender" class="form-check-input" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">Female</label>
                     </div>
-                    <div>
+                    <div class="errorLabel">
                         @error('gender')
                             <span>
                                 {{ $message }}
@@ -64,7 +68,7 @@
                 <div class="form-floating mb-3">
                     <textarea name="address" placeholder="Address" class="form-control" id="floatingAddress" rows="5"></textarea>
                     <label for="floatingAddress">Address</label>
-                    <div>
+                    <div class="errorLabel">
                         @error('address')
                             <span>
                                 {{ $message }}
@@ -75,7 +79,7 @@
                 <div class="form-floating mb-3">
                     <input name="registerEmail" placeholder="Email" type="email" class="form-control" id="floatingEmail" aria-describedby="emailHelp">
                     <label for="floatingEmail">Email</label>
-                    <div>
+                    <div class="errorLabel">
                         @error('email')
                             <span>
                                 {{ $message }}
@@ -86,7 +90,7 @@
                 <div class="form-floating mb-3">
                     <input name="password" placeholder="Password" type="password" class="form-control" id="floatingPassword">
                     <label for="floatingPassword">Password</label>
-                    <div>
+                    <div class="errorLabel">
                         @error('password')
                             <span>
                                 {{ $message }}
@@ -97,7 +101,7 @@
                 <div class="form-floating mb-3">
                     <input name="confirm-password" placeholder="Confirm Password" type="password" class="form-control" id="floatingConfirmPassword">
                     <label for="floatingConfirmPassword">Confirm Password</label>
-                    <div>
+                    <div class="errorLabel">
                         @error('confirm-password')
                             <span>
                                 {{ $message }}
@@ -108,7 +112,7 @@
                 <div class="mb-3 form-check">
                     <input name="agree" type="checkbox" class="form-check-input" id="exampleCheck1">
                     <label class="form-check-label" for="exampleCheck1">I agree with terms & conditions</label>
-                    <div>
+                    <div class="errorLabel">
                         @error('agree')
                             <span>
                                 {{ $message }}
