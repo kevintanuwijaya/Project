@@ -47,7 +47,7 @@ Route::post('/cart/insert',[CartController::class,'store']);
 
 Route::post('/cart/checkout',[CartController::class,'checkout']);
 
-Route::post('/cart/delete/{id}',[CartController::class,'destroy']);
+Route::post('/cart/delete/{cart_id}/{product_id}',[CartController::class,'destroy']);
 
 
 //PRODUCT
