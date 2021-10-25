@@ -5,6 +5,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\ProductController;
+use App\Models\Cart;
 use App\Models\Product;
 use App\Models\Role;
 use Illuminate\Support\Facades\Route;
@@ -36,9 +37,17 @@ Route::get('/logout', [AuthController::class, 'logout']);
 
 
 //CARTS
-Route::get('/cart',[CartController::class,'index']);
+Route::get('/cart',[CartController::class,'create']);
 
-Route::get('/cart/{id}',[CartController::class,'edit']);
+Route::get('/cart/edit/{id}',[CartController::class,'edit']);
+
+Route::post('/cart/edit/{id}',[CartController::class,'update']);
+
+Route::post('/cart/insert',[CartController::class,'store']);
+
+Route::post('/cart/checkout',[CartController::class,'checkout']);
+
+Route::post('/cart/delete/{id}',[CartController::class,'destroy']);
 
 
 //PRODUCT
