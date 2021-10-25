@@ -34,7 +34,7 @@
     <div class="d-flex flex-column justify-content-center align-items-center">
         <div class="d-flex flex-column m-4 p-4 form">
             <h2 class="login-title">Join With Us</h2>
-            <form method="POST" action="/register">
+            <form method="POST" action="/register" enctype="multipart/form-data">
                 @csrf
                 <div class="form-floating mb-3">
                     <input name="fullname" placeholder="Full Name" type="text" id="floatingFullName" class="form-control">
@@ -50,11 +50,11 @@
                 <span>Gender</span>
                 <div class="mb-3 form-check d-flex">
                     <div class="gender-form">
-                        <input type="radio" name="gender" class="form-check-input" id="exampleCheck1">
+                        <input type="radio" name="gender" class="form-check-input" id="exampleCheck1" value="Male">
                         <label class="form-check-label" for="exampleCheck1">Male</label>
                     </div>
                     <div class="gender-form">
-                        <input type="radio" name="gender" class="form-check-input" id="exampleCheck1">
+                        <input type="radio" name="gender" class="form-check-input" id="exampleCheck1" value="Female">
                         <label class="form-check-label" for="exampleCheck1">Female</label>
                     </div>
                     <div class="errorLabel">

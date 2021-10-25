@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
@@ -66,12 +67,26 @@ class AuthController extends Controller
             'fullname' => 'required|min:5',
             'gender' => 'required',
             'address' => 'required|min:10',
-            'email' => 'required|email|unique:users,email',
+            'registerEmail' => 'required|email|unique:users,email',
             'password' => 'required|min:6',
             'confirm-password' => 'same:password',
             'agree' => 'required'
         ]);
+
+
+
+        User::create([
+            'name' => $request->input('fullname'),
+            'gender' => $request->gender,
+            'role_id' => 2,
+            'address' => $request->input('address'),
+            'email' => $request->input('registerEmail'),
+            'password' => bcrypt($request->input('password')),
+        ]);
+        return redirect()->intended('/login');
     }
+
+
 
     public function logout(Request $request){
 
