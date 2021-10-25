@@ -39,9 +39,9 @@ Route::get('/logout', [AuthController::class, 'logout']);
 //CARTS
 Route::get('/cart',[CartController::class,'create']);
 
-Route::get('/cart/edit/{id}',[CartController::class,'edit']);
+Route::get('/cart/edit/{cart_id}/{product_id}',[CartController::class,'edit']);
 
-Route::post('/cart/edit/{id}',[CartController::class,'update']);
+Route::post('/cart/edit/{cart_id}/{product_id}',[CartController::class,'update']);
 
 Route::post('/cart/insert',[CartController::class,'store']);
 
