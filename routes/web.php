@@ -43,7 +43,7 @@ Route::get('/cart/edit/{cart_id}/{product_id}',[CartController::class,'edit']);
 
 Route::post('/cart/edit/{cart_id}/{product_id}',[CartController::class,'update']);
 
-Route::post('/cart/insert',[CartController::class,'store']);
+Route::post('/cart/insert/{product_id}',[CartController::class,'store']);
 
 Route::post('/cart/checkout',[CartController::class,'checkout']);
 

@@ -14,6 +14,10 @@
             background-color: rgb(248, 249, 250);
         }
 
+        .error-message{
+            color: red;
+        }
+
     </style>
 @endsection
 
@@ -21,7 +25,7 @@
 <div class="detail-product-page">
     <div class="detail-container d-flex rounded">
         <div class="w-50">
-            <img src="storage/assets/lenovo-legion.webp" class="w-100 rounded" alt="" srcset="">
+            <img src="/storage/product-assets/{{ $product->picture }}" class="w-100 rounded" alt="" srcset="">
         </div>
         <div class="d-flex flex-column detail-info w-50 p-5">
             <h2>{{ $product->name }}</h2>
@@ -35,13 +39,21 @@
             <h4>Description</h4>
             <p>{{ $product->description }}</p>
             <hr>
-            <form action="" method="post">
+            <form action="/cart/insert/{{ $product->id }}" method="POST">
                 @csrf
-                <a href="/login" class="btn btn-warning">Login to buy</a>
-                <span>Qty:&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                <input type="number">
-                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                <input type="submit" class="btn btn-warning" value="Add To Cart">
+                @auth()
+                    @if (Auth::check() && Auth::user()->role_id == 2)
+                        <span>Qty:&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <input type="number" name="quantity">
+                        @error('quantity')
+                            <span class="error-message">{{$message}}</span>
+                        @enderror
+                        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <input type="submit" class="btn btn-warning" value="Add To Cart">
+                    @endif
+                @else
+                    <a href="/login" class="btn btn-warning">Login to buy</a> 
+                @endauth
             </form>
         </div>
     </div>
