@@ -9,6 +9,11 @@ class TransactionHeader extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'status'
+    ];
+
     public function users(){
         return $this->belongsTo(User::class);
     }
