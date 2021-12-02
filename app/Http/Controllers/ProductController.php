@@ -53,18 +53,19 @@ class ProductController extends Controller
             'description' => 'required|min:50',
             'price' => 'required|integer|gt:0',
             'category' => 'required',
-            'picture' => 'required|mimes:jpg'
+            'picture' => 'required|mimes:jpg,png'
         ]);
 
-        $image_path = Storage::disk('local')->put('public/product-assets',$request->picture);
-        $image_path = explode("/",$image_path);
+        $file = $request->file('picture');
+        $fileName = time().$file->getClientOriginalName();
+        Storage::putFileAs('public/product-assets',$file,$fileName);
 
         Product::create([
             'category_id' => $request->category,
             'name' => $request->productname, 
             'price' => $request->price,
             'description' => $request->description,
-            'picture' => $image_path[2],
+            'picture' => $fileName,
         ]);
 
         return redirect('/products');
@@ -123,13 +124,15 @@ class ProductController extends Controller
 
 
             $request->validate([
-                'picture' => 'mimes:jpg'
+                'picture' => 'mimes:jpg,png'
             ]);
+            
+            Storage::delete('public/product-assets/'.$product->picture);
+            $file = $request->file('picture');
+            $fileName = time().$file->getClientOriginalName();
+            Storage::putFileAs('public/product-assets',$file,$fileName);
 
-            $image_path = Storage::disk('local')->put('public/product-assets',$request->picture);
-            $image_path = explode("/",$image_path);
-
-            $product->picture = $image_path[2];
+            $product->picture = $fileName;
         }
 
         $product->name = $request->productname;
@@ -153,6 +156,7 @@ class ProductController extends Controller
         //
         $product = Product::find($id);
 
+        Storage::delete('public/product-assets/'.$product->picture);
         $product->delete();
 
         return redirect('/products');
