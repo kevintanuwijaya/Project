@@ -39,15 +39,15 @@ Route::get('/logout', [AuthController::class, 'logout']);
 //CARTS
 Route::get('/cart',[CartController::class,'create']);
 
-Route::get('/cart/edit/{cart_id}/{product_id}',[CartController::class,'edit']);
+Route::get('/cart/{cart_id}/{product_id}',[CartController::class,'edit']);
 
-Route::post('/cart/edit/{cart_id}/{product_id}',[CartController::class,'update']);
+Route::patch('/cart/{cart_id}/{product_id}',[CartController::class,'update']);
 
-Route::post('/cart/insert/{product_id}',[CartController::class,'store']);
+Route::put('/cart/{product_id}',[CartController::class,'store']);
 
 Route::post('/cart/checkout',[CartController::class,'checkout']);
 
-Route::post('/cart/delete/{cart_id}/{product_id}',[CartController::class,'destroy']);
+Route::delete('/cart/{cart_id}/{product_id}',[CartController::class,'destroy']);
 
 
 //PRODUCT
@@ -55,11 +55,11 @@ Route::get('/product/edit/{id}',[ProductController::class,'edit']);
 
 Route::get('/product/insert',[ProductController::class,'create']);
 
-Route::post('/product/insert',[ProductController::class,'store']);
+Route::put('/product',[ProductController::class,'store']);
 
-Route::post('/product/update/{id}',[ProductController::class,'update']);
+Route::patch('/product/{id}',[ProductController::class,'update']);
 
-Route::delete('/product/delete/{id}',[ProductController::class,'destroy']);
+Route::delete('/product/{id}',[ProductController::class,'destroy']);
 
 Route::get('/products',[ProductController::class,'index']);
 
@@ -69,15 +69,15 @@ Route::get('/product/{id}',[ProductController::class,'show']);
 //CATEGORY
 Route::get('/categories',[CategoryController::class,'index']);
 
-Route::get('/category/update/{id}',[CategoryController::class,'edit']);
+Route::get('/category/{id}',[CategoryController::class,'edit']);
 
-Route::post('/category/update/{id}',[CategoryController::class,'update']);
+Route::patch('/category/{id}',[CategoryController::class,'update']);
 
-Route::get('/category/insert',[CategoryController::class,'create']);
+Route::get('/category',[CategoryController::class,'create']);
 
-Route::post('/category/insert',[CategoryController::class,'store']);
+Route::put('/category',[CategoryController::class,'store']);
 
-Route::post('/category/delete/{id}',[CategoryController::class,'destroy']);
+Route::delete('/category/{id}',[CategoryController::class,'destroy']);
 
 
 

@@ -83,7 +83,7 @@
                         <div class="d-flex">
                             <a href="/product/edit/{{ $product->id }}" type="
                             button" class="btn btn-warning">Update</a>
-                            <form action="/product/delete/{{ $product->id }}" method="POST">
+                            <form action="/product/{{ $product->id }}" method="POST">
                                 @csrf
                                 @method("delete")
                                 <input type="submit" value="Delete" class="btn btn-danger">

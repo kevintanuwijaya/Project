@@ -42,12 +42,18 @@
             <form method="POST" action="
 
                 @if ($product == null)
-                    /product/insert
+                    /product
                 @else
-                    /product/update/{{ $product->id }}
+                    /product/{{ $product->id }}
                 @endif
             " enctype="multipart/form-data">
                 @csrf
+                @if ($product == null)
+                    @method('PUT')
+                @else
+                    @method('PATCH')
+                @endif
+
                 <div class="form-floating mb-3">
                     <input name="productname" placeholder="Product Name" type="text" id="floatingProductName" class="form-control" 
                     value="@if ($product!=null){{ $product->name }}@endif"> 

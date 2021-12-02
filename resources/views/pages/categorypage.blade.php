@@ -42,13 +42,18 @@
             <form method="POST" action="
             
                 @if ($category == null)
-                    /category/insert 
+                    /category 
                 @else
-                    /category/update/{{ $category->id }}
+                    /category/{{ $category->id }}
                 @endif
 
             ">
                 @csrf
+                @if ($category == null)
+                    @method('PUT')    
+                @else
+                    @method('PATCH')
+                @endif
                 <div class="form-floating mb-3">
                     <input name="name" placeholder="Category Name" type="text" id="floatingName" class="form-control" value="@if ($category != null){{ $category->name }}@endif"> 
                     <label for="floatingName">Category Name</label>

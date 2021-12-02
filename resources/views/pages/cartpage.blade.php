@@ -74,9 +74,10 @@
                         </div>
                         <div>
                             <div class="d-flex">
-                                <form action="/cart/delete/{{ $cartdetail->cart_id }}/{{ $cartdetail->product_id }}" method="POST">
+                                <form action="/cart/{{ $cartdetail->cart_id }}/{{ $cartdetail->product_id }}" method="POST">
                                     @csrf
-                                    <a href="/cart/edit/{{ $cartdetail->cart_id }}/{{ $cartdetail->product_id }}" type="button" class="btn btn-warning">Edit</a>
+                                    @method('DELETE')
+                                    <a href="/cart/{{ $cartdetail->cart_id }}/{{ $cartdetail->product_id }}" type="button" class="btn btn-warning">Edit</a>
                                     <input type="submit" class="btn btn-danger" value="Delete">
                                 </form>
                             </div>

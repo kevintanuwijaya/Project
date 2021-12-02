@@ -39,8 +39,9 @@
             <h4>Description</h4>
             <p>{{ $product->description }}</p>
             <hr>
-            <form action="/cart/insert/{{ $product->id }}" method="POST">
+            <form action="/cart/{{ $product->id }}" method="POST">
                 @csrf
+                @method('PUT')
                 @auth()
                     @if (Auth::check() && Auth::user()->role_id == 2)
                         <span>Qty:&nbsp;&nbsp;&nbsp;&nbsp;</span>

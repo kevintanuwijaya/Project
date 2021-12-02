@@ -92,7 +92,7 @@
     <header>
         <nav>
             <div class="nav-search d-flex p-3 justify-content-between align-items-center">
-                <img class="logo" src="storage/assets/logo.png" alt="logo" srcset="">
+                <img class="logo" src="/storage/assets/logo.png" alt="logo" srcset="">
                 <form action="" method="get" class="d-flex search-form">
                     <input class="form-control search-input" type="search" placeholder="Search Product..">
                     <button type="submit" class="btn btn-link"><i class="bi bi-search search-btn m-2"></i></button>
@@ -100,8 +100,8 @@
             </div>
             <div class="nav-menu nav-menu-bgcolor d-flex justify-content-between align-items-center">
                 <div class="m-2 d-flex">
-                    <a href=""><button type="button" class="btn btn-link text-white btn-link-update c-w">Home</button></a>
-                    <a href=""><button type="button" class="btn btn-link text-white btn-link-update c-w">My Cart</button></a>
+                    <a href="/home"><button type="button" class="btn btn-link text-white btn-link-update c-w">Home</button></a>
+                    <a href="/cart"><button type="button" class="btn btn-link text-white btn-link-update c-w">My Cart</button></a>
                     <a href=""><button type="button" class="btn btn-link text-white btn-link-update c-w">History Transaction</button></a>
                     @if (Auth::check() && Auth::user()->role_id == 1)
                         <div class="dropdown">
@@ -126,9 +126,9 @@
                 </div>
                 <div class="m-2">
                     @if (!(Auth::check()))
-                        <a href=""><button type="button" class="btn btn-outline-light">Login</button></a>
+                        <a href="/login"><button type="button" class="btn btn-outline-light">Login</button></a>
                     @endif
-                    <a href=""><button type="button" class="btn btn-outline-light">Register</button></a>
+                    <a href="/register"><button type="button" class="btn btn-outline-light">Register</button></a>
                     @if (Auth::check())
                         <a href="/logout"><button type="button" class="btn btn-outline-light">Logout</button></a>
                     @endif

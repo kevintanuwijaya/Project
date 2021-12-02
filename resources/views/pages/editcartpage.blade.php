@@ -41,8 +41,9 @@
             <h4>Description</h4>
             <p>{{ $cartdetail->product->description }}</p>
             <hr>
-            <form action="/cart/edit/{{ $cartdetail->cart_id }}/{{ $cartdetail->product_id }}" method="POST">
+            <form action="/cart/{{ $cartdetail->cart_id }}/{{ $cartdetail->product_id }}" method="POST">
                 @csrf
+                @method('PATCH')
                 <span>Qty:&nbsp;&nbsp;&nbsp;&nbsp;</span>
                 <input type="number" name="quantity" value="{{$cartdetail->quantity}}">
                 @error('quantity')  
