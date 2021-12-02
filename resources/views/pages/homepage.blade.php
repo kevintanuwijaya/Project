@@ -52,7 +52,7 @@
         @endforeach
     </div>
     <div class="pagination">
-        {{ $products->links('pagination::bootstrap-4') }}
+        {{ $products->withQueryString()->links('pagination::bootstrap-4') }}
     </div>
 </div>
 @endsection

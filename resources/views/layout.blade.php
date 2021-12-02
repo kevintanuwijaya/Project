@@ -93,8 +93,8 @@
         <nav>
             <div class="nav-search d-flex p-3 justify-content-between align-items-center">
                 <img class="logo" src="/storage/assets/logo.png" alt="logo" srcset="">
-                <form action="" method="get" class="d-flex search-form">
-                    <input class="form-control search-input" type="search" placeholder="Search Product..">
+                <form action="/search" method="GET" class="d-flex search-form">
+                    <input class="form-control search-input" type="search" placeholder="Search Product.." name="product_name">
                     <button type="submit" class="btn btn-link"><i class="bi bi-search search-btn m-2"></i></button>
                 </form>
             </div>

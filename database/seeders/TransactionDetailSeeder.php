@@ -19,7 +19,7 @@ class TransactionDetailSeeder extends Seeder
         $length = count($productId);
         for($i=0; $i<$length; $i++){
             TransactionDetail::create([
-                'transactionHeader_id' => 1, 
+                'transaction_header_id' => 1,
                 'product_id' => $productId[$i],
                 'quantity' => $quantity[$i],
             ]);
@@ -30,7 +30,7 @@ class TransactionDetailSeeder extends Seeder
         $length = count($productId);
         for($i=0; $i<$length; $i++){
             TransactionDetail::create([
-                'transactionHeader_id' => 2, 
+                'transaction_header_id' => 2,
                 'product_id' => $productId[$i],
                 'quantity' => $quantity[$i],
             ]);
@@ -41,7 +41,7 @@ class TransactionDetailSeeder extends Seeder
         $length = count($productId);
         for($i=0; $i<$length; $i++){
             TransactionDetail::create([
-                'transactionHeader_id' => 3, 
+                'transaction_header_id' => 3,
                 'product_id' => $productId[$i],
                 'quantity' => $quantity[$i],
             ]);
@@ -52,7 +52,7 @@ class TransactionDetailSeeder extends Seeder
         $length = count($productId);
         for($i=0; $i<$length; $i++){
             TransactionDetail::create([
-                'transactionHeader_id' => 4, 
+                'transaction_header_id' => 4,
                 'product_id' => $productId[$i],
                 'quantity' => $quantity[$i],
             ]);
@@ -63,12 +63,12 @@ class TransactionDetailSeeder extends Seeder
         $length = count($productId);
         for($i=0; $i<$length; $i++){
             TransactionDetail::create([
-                'transactionHeader_id' => 5, 
+                'transaction_header_id' => 5,
                 'product_id' => $productId[$i],
                 'quantity' => $quantity[$i],
             ]);
         }
 
-        
+
     }
 }

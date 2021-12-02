@@ -26,6 +26,6 @@ class Product extends Model
     }
 
     public function transactionDetail(){
-        return $this->hasMany(TransactionDetail::class);
+        return $this->belongsToMany(TransactionDetail::class);
     }
 }

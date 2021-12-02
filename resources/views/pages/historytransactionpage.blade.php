@@ -31,7 +31,26 @@
             <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample1" ></button>
         </div>
         <div class="collapse" id="collapseExample1">
+            @foreach ($transactions as $transaction)
+                @foreach ($transaction->transactionDetail as $transactionDetail)
             <div class="card card-body rounded">
+               <div class="d-flex">
+                    <div class="w-25">
+                        <img src="storage/assets/lenovo-legion.webp" class="w-100 rounded" alt="" srcset="">
+                    </div>
+                    <div class="d-flex flex-column justify-content-between p-3 w-75">
+                        <div class="d-flex">
+                            <h4>{{ $transactionDetail->products->name }}</h4>
+                            <span>(IDR. [Price])</span>
+                        </div>
+                        <p>x[jumlah] pcs</p>
+                        <p class="text-end">IDR. [Harga] </p>
+                    </div>
+               </div>
+            </div>
+                @endforeach
+            @endforeach
+            {{-- <div class="card card-body rounded">
                <div class="d-flex">
                     <div class="w-25">
                         <img src="storage/assets/lenovo-legion.webp" class="w-100 rounded" alt="" srcset="">
@@ -45,22 +64,7 @@
                         <p class="text-end">IDR. [Harga] </p>
                     </div>
                </div>
-            </div>
-            <div class="card card-body rounded">
-               <div class="d-flex">
-                    <div class="w-25">
-                        <img src="storage/assets/lenovo-legion.webp" class="w-100 rounded" alt="" srcset="">
-                    </div>
-                    <div class="d-flex flex-column justify-content-between p-3 w-75">
-                        <div class="d-flex">
-                            <h4>[Item Name]</h4>
-                            <span>(IDR. [Price])</span>
-                        </div>
-                        <p>x[jumlah] pcs</p>
-                        <p class="text-end">IDR. [Harga] </p>
-                    </div>
-               </div>
-            </div>
+            </div> --}}
             <div class="grand-total">
                 <h5 class="text-end">Total Price: IDR [Grand Total]</h5>
             </div>

@@ -5,9 +5,11 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TransactionController;
 use App\Models\Cart;
 use App\Models\Product;
 use App\Models\Role;
+use App\Models\Transaction;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -82,13 +84,9 @@ Route::delete('/category/{id}',[CategoryController::class,'destroy']);
 
 
 //HISTORY
-Route::get('/history',function(){
-    return view('pages.historytransactionpage');
-});
+Route::get('/history/{user_id}',[TransactionController::class, 'transactionHistory']);
 
 
 //SEARCH
-Route::get('/search',function(){
-    return view('pages/searchpage');
-});
+Route::get('/search', [GeneralController::class, 'search']);
 
