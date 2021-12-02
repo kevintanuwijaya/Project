@@ -10,7 +10,7 @@ class TransactionController extends Controller
 {
     public function transactionHistory($user_id){
         $transactions = TransactionHeader::where('user_id', '=', $user_id)->get();
-        // dd($transactions);
+
         return view('pages.historytransactionpage', ['transactions'=> $transactions]);
     }
 }

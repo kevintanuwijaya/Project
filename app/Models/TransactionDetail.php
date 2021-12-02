@@ -10,7 +10,7 @@ class TransactionDetail extends Model
     use HasFactory;
 
     protected $fillable = [
-        'transactionHeader_id',
+        'transaction_header_id',
         'product_id',
         'quantity'
     ];
@@ -19,7 +19,7 @@ class TransactionDetail extends Model
         return $this->belongsTo(TransactionHeader::class);
     }
 
-    public function products(){
-        return $this->hasMany(Product::class);
+    public function product(){
+        return $this->belongsTo(Product::class);
     }
 }

@@ -197,7 +197,7 @@ class CartController extends Controller
         foreach($cartDetails as $cartDetail){
 
             TransactionDetail::create([
-                'transactionHeader_id' => $transactionHeader->id,
+                'transaction_header_id' => $transactionHeader->id,
                 'product_id' => $cartDetail->product_id,
                 'quantity' => $cartDetail->quantity,
             ]);

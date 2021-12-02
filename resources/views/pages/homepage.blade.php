@@ -38,7 +38,7 @@
         @foreach ($products as $product)
             <div class="col">
                 <div class="card" style="width: 30vw;">
-                    <img src="storage/product-assets/{{ $product->picture }}" class="card-img-top" alt="...">
+                    <img src="/storage/product-assets/{{ $product->picture }}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
                             <h5 class="card-title">{{ $product->name }}</h5>

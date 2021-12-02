@@ -102,7 +102,7 @@
                 <div class="m-2 d-flex">
                     <a href="/home"><button type="button" class="btn btn-link text-white btn-link-update c-w">Home</button></a>
                     <a href="/cart"><button type="button" class="btn btn-link text-white btn-link-update c-w">My Cart</button></a>
-                    <a href=""><button type="button" class="btn btn-link text-white btn-link-update c-w">History Transaction</button></a>
+                    <a href="/history/{{ Auth::id() }}"><button type="button" class="btn btn-link text-white btn-link-update c-w">History Transaction</button></a>
                     @if (Auth::check() && Auth::user()->role_id == 1)
                         <div class="dropdown">
                             <button class="btn btn-link btn-link-update text-white dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
