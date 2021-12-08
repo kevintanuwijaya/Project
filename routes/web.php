@@ -27,66 +27,69 @@ Route::get('/', [GeneralController::class,'homePage']);
 
 Route::get('/home', [GeneralController::class,'homePage']);
 
-Route::get('/login', [AuthController::class,'loginPage'] );
+Route::middleware('isGuest')->group(function(){
+    Route::get('/login', [AuthController::class,'loginPage']);
 
-Route::get('/register', [AuthController::class,'registerPage']);
+    Route::post('/login', [AuthController::class,'login'] );
 
-Route::post('/login', [AuthController::class,'login'] );
+    Route::get('/register', [AuthController::class,'registerPage']);
 
-Route::post('/register', [AuthController::class,'register']);
+    Route::post('/register', [AuthController::class,'register']);
+});
 
-Route::get('/logout', [AuthController::class, 'logout']);
+Route::get('/logout', [AuthController::class, 'logout'])->middleware('isLogin');
 
+Route::get('/search', [GeneralController::class, 'search']);
 
 //CARTS
-Route::get('/cart',[CartController::class,'create']);
+Route::prefix('cart')->middleware('isUser')->group(function(){
+    Route::get('/',[CartController::class,'create']);
 
-Route::get('/cart/{cart_id}/{product_id}',[CartController::class,'edit']);
-
-Route::patch('/cart/{cart_id}/{product_id}',[CartController::class,'update']);
-
-Route::put('/cart/{product_id}',[CartController::class,'store']);
-
-Route::post('/cart/checkout',[CartController::class,'checkout']);
-
-Route::delete('/cart/{cart_id}/{product_id}',[CartController::class,'destroy']);
-
+    Route::get('/{cart_id}/{product_id}',[CartController::class,'edit']);
+    
+    Route::patch('/{cart_id}/{product_id}',[CartController::class,'update']);
+    
+    Route::put('/{product_id}',[CartController::class,'store']);
+    
+    Route::post('/checkout',[CartController::class,'checkout']);
+    
+    Route::delete('/{cart_id}/{product_id}',[CartController::class,'destroy']);
+});
 
 //PRODUCT
-Route::get('/product/edit/{id}',[ProductController::class,'edit']);
+Route::prefix('product')->group(function(){
+    Route::middleware('isAdmin')->group(function(){
+        Route::get('/edit/{id}',[ProductController::class,'edit']);
+        
+        Route::get('/insert',[ProductController::class,'create']);
 
-Route::get('/product/insert',[ProductController::class,'create']);
+        Route::put('/',[ProductController::class,'store']);
 
-Route::put('/product',[ProductController::class,'store']);
+        Route::patch('/{id}',[ProductController::class,'update']);
 
-Route::patch('/product/{id}',[ProductController::class,'update']);
+        Route::delete('/{id}',[ProductController::class,'destroy']);
 
-Route::delete('/product/{id}',[ProductController::class,'destroy']);
+        Route::get('/',[ProductController::class,'index']);
+    });
 
-Route::get('/products',[ProductController::class,'index']);
-
-Route::get('/product/{id}',[ProductController::class,'show']);
-
+    Route::get('/{id}',[ProductController::class,'show']);
+});
 
 //CATEGORY
-Route::get('/categories',[CategoryController::class,'index']);
+Route::prefix('category')->middleware('isAdmin')->group(function(){
+    Route::get('/',[CategoryController::class,'index']);
 
-Route::get('/category/{id}',[CategoryController::class,'edit']);
+    Route::get('/{id}',[CategoryController::class,'edit']);
 
-Route::patch('/category/{id}',[CategoryController::class,'update']);
+    Route::patch('/{id}',[CategoryController::class,'update']);
 
-Route::get('/category',[CategoryController::class,'create']);
+    Route::get('/',[CategoryController::class,'create']);
 
-Route::put('/category',[CategoryController::class,'store']);
+    Route::put('/',[CategoryController::class,'store']);
 
-Route::delete('/category/{id}',[CategoryController::class,'destroy']);
-
-
+    Route::delete('/{id}',[CategoryController::class,'destroy']);
+});
 
 //HISTORY
-Route::get('/history/{user_id}',[TransactionController::class, 'transactionHistory']);
-
-
-//SEARCH
-Route::get('/search', [GeneralController::class, 'search']);
+Route::get('/history/{user_id}',[TransactionController::class, 'transactionHistory'])->middleware('isUser');
 
