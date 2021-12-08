@@ -37,8 +37,13 @@
     <div class="row row-cols-3">
         @foreach ($products as $product)
             <div class="col">
+<<<<<<< HEAD
                 <div class="card border border-warning" style="width: 30vw;">
                     <img src="storage/product-assets/{{ $product->picture }}" class="card-img-top" alt="...">
+=======
+                <div class="card" style="width: 30vw;">
+                    <img src="/storage/product-assets/{{ $product->picture }}" class="card-img-top" alt="...">
+>>>>>>> 7833b8c46d135d7147e27522fb6a0550dd1cbc7d
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
                             <h5 class="card-title">{{ $product->name }}</h5>
