@@ -34,7 +34,10 @@
             <p>{{ $product->category->name }}</p>
             <hr>
             <h4>Price:</h4>
-            <p>{{ $product->price }}</p>
+            @php
+                $priceStr = number_format($product->price,2,',',',');
+            @endphp
+            <p>{{ $priceStr }}</p>
             <hr>
             <h4>Description</h4>
             <p>{{ $product->description }}</p>

@@ -51,8 +51,8 @@
                 $subtotalPrice = $transaction->transactionDetail[0]->quantity * $transaction->transactionDetail[0]->product->price;
                 $totalPrice = $totalPrice + $subtotalPrice;
 
-                $priceStr = number_format($transaction->transactionDetail[0]->product->price,2,',','.');
-                $subtotalPriceStr = number_format($subtotalPrice,2,',','.');
+                $priceStr = number_format($transaction->transactionDetail[0]->product->price,2,',',',');
+                $subtotalPriceStr = number_format($subtotalPrice,2,',',',');
             @endphp
             <div class="accordion-body accordion-show">
                 <div class="card card-body rounded">
@@ -80,8 +80,8 @@
                     $subtotalPrice = $transaction->transactionDetail[$i]->quantity * $transaction->transactionDetail[$i]->product->price;
                     $totalPrice = $totalPrice + $subtotalPrice;
 
-                    $priceStr = number_format($transaction->transactionDetail[$i]->product->price,2,',','.');
-                    $subtotalPriceStr = number_format($subtotalPrice,2,',','.');
+                    $priceStr = number_format($transaction->transactionDetail[$i]->product->price,2,',',',');
+                    $subtotalPriceStr = number_format($subtotalPrice,2,',',',');
                     @endphp
                     <div class="card card-body rounded">
                         <div class="d-flex">
@@ -102,7 +102,7 @@
             </div>  
             </div>
             @php
-                $totalPriceStr = number_format($totalPrice,2,',','.');
+                $totalPriceStr = number_format($totalPrice,2,',',',');
             @endphp
 
             <div class="grand-total">

@@ -52,8 +52,8 @@
                     $subtotalPrice = $cartdetail->quantity * $cartdetail->product->price;
                     $totalPrice = $totalPrice + $subtotalPrice;
 
-                    $priceStr = number_format($cartdetail->product->price,2,',','.');
-                    $subtotalPriceStr = number_format($subtotalPrice,2,',','.');
+                    $priceStr = number_format($cartdetail->product->price,2,',',',');
+                    $subtotalPriceStr = number_format($subtotalPrice,2,',',',');
                 @endphp
 
                 <div class="d-flex p-4 cart-items">
@@ -93,7 +93,7 @@
         <div class="d-flex justify-content-between align-items-center">
 
             @php
-                $totalPriceStr = number_format($totalPrice,2,',','.');
+                $totalPriceStr = number_format($totalPrice,2,',',',');
 
                 $itemCount = 0;
                 if($cartdetails != null){
