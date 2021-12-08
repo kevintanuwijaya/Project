@@ -134,7 +134,7 @@
                         <a href="/register"><button type="button" class="btn btn-outline-light">Register</button></a>
                     @endif
                     @if (Auth::check())
-                        <a href="/logout"><button type="button" class="btn btn-outline-light">Logout</button></a>
+                        <a href="/logout"><button type="button" class="btn btn-outline-light"><i class="bi bi-box-arrow-right m-1"></i>Logout</button></a>
                     @endif
                 </div>
             </div>
@@ -145,10 +145,10 @@
     </main>
     <footer class="footer footer-bgcolor d-flex flex-column justify-content-between align-items-center p-3">
         <div>
-            <a class="footer-icon btn-link-update" href="">
+            <a class="footer-icon btn-link-update" href="https://www.facebook.com/">
                 <i class="bi bi-facebook"></i>
             </a>
-            <a class="footer-icon btn-link-update" href="">
+            <a class="footer-icon btn-link-update" href="https://www.instagram.com/">
                 <i class="bi bi-instagram"></i>
             </a>
             <a class="footer-icon btn-link-update" href="">
