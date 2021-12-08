@@ -101,34 +101,38 @@
             <div class="nav-menu nav-menu-bgcolor d-flex justify-content-between align-items-center">
                 <div class="m-2 d-flex">
                     <a href="/home"><button type="button" class="btn btn-link text-white btn-link-update c-w">Home</button></a>
-                    <a href="/cart"><button type="button" class="btn btn-link text-white btn-link-update c-w">My Cart</button></a>
-                    <a href="/history/{{ Auth::id() }}"><button type="button" class="btn btn-link text-white btn-link-update c-w">History Transaction</button></a>
-                    @if (Auth::check() && Auth::user()->role_id == 1)
-                        <div class="dropdown">
-                            <button class="btn btn-link btn-link-update text-white dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                Manage Product
-                            </button>
-                            <ul class="dropdown-menu nav-menu-bgcolor" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="btn btn-link text-white btn-link-update" href="/products">View Product</a></li>
-                                <li><a class="btn btn-link text-white btn-link-update" href="/product/insert">Add Product</a></li>
-                            </ul>
-                        </div>
-                        <div class="dropdown">
-                            <button class="btn btn-link btn-link-update text-white dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                Manage Category
-                            </button>
-                            <ul class="dropdown-menu nav-menu-bgcolor" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="btn btn-link text-white btn-link-update" href="/categories">View Category</a></li>
-                                <li><a class="btn btn-link text-white btn-link-update" href="/category/insert">Add Category</a></li>
-                            </ul>
-                        </div>
+                    @if (Auth::check())
+                        @if (Auth::user()->role_id == 1)
+                            <div class="dropdown">
+                                <button class="btn btn-link btn-link-update text-white dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Manage Product
+                                </button>
+                                <ul class="dropdown-menu nav-menu-bgcolor" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="btn btn-link text-white btn-link-update" href="/product">View Product</a></li>
+                                    <li><a class="btn btn-link text-white btn-link-update" href="/product/insert">Add Product</a></li>
+                                </ul>
+                            </div>
+                            <div class="dropdown">
+                                <button class="btn btn-link btn-link-update text-white dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Manage Category
+                                </button>
+                                <ul class="dropdown-menu nav-menu-bgcolor" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="btn btn-link text-white btn-link-update" href="/category">View Category</a></li>
+                                    <li><a class="btn btn-link text-white btn-link-update" href="/category/insert">Add Category</a></li>
+                                </ul>
+                            </div>
+                        @endif
+                        @if (Auth::user()->role_id == 2)
+                            <a href="/cart"><button type="button" class="btn btn-link text-white btn-link-update c-w">My Cart</button></a>
+                            <a href="/history/{{ Auth::id() }}"><button type="button" class="btn btn-link text-white btn-link-update c-w">History Transaction</button></a>
+                        @endif
                     @endif
                 </div>
                 <div class="m-2">
                     @if (!(Auth::check()))
                         <a href="/login"><button type="button" class="btn btn-outline-light">Login</button></a>
+                        <a href="/register"><button type="button" class="btn btn-outline-light">Register</button></a>
                     @endif
-                    <a href="/register"><button type="button" class="btn btn-outline-light">Register</button></a>
                     @if (Auth::check())
                         <a href="/logout"><button type="button" class="btn btn-outline-light">Logout</button></a>
                     @endif
