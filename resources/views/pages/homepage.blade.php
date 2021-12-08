@@ -16,7 +16,7 @@
         }
 
         .card-img-top{
-            height: 30vh;
+            height: 44vh;
             width: 30vw;
         }
 
@@ -37,7 +37,7 @@
     <div class="row row-cols-3">
         @foreach ($products as $product)
             <div class="col">
-                <div class="card" style="width: 30vw;">
+                <div class="card border border-warning" style="width: 30vw;">
                     <img src="storage/product-assets/{{ $product->picture }}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
