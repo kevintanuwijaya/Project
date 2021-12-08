@@ -68,7 +68,7 @@ class ProductController extends Controller
             'picture' => $fileName,
         ]);
 
-        return redirect('/products');
+        return redirect('/product');
     }
 
     /**
@@ -159,6 +159,6 @@ class ProductController extends Controller
         Storage::delete('public/product-assets/'.$product->picture);
         $product->delete();
 
-        return redirect('/products');
+        return redirect('/product');
     }
 }
