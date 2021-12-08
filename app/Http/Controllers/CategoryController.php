@@ -50,7 +50,7 @@ class CategoryController extends Controller
             'name' => $request->name,
         ]);
 
-        return redirect('/categories');
+        return redirect('/category');
     }
 
     /**
@@ -98,7 +98,7 @@ class CategoryController extends Controller
 
         $category->update();
 
-        return redirect('/categories');
+        return redirect('/category');
     }
 
     /**
@@ -114,6 +114,6 @@ class CategoryController extends Controller
 
         $category->delete();
 
-        return redirect('/categories');
+        return redirect('/category');
     }
 }

@@ -83,9 +83,9 @@ Route::prefix('category')->middleware('isAdmin')->group(function(){
 
     Route::patch('/{id}',[CategoryController::class,'update']);
 
-    Route::get('/',[CategoryController::class,'create']);
+    Route::get('/insert',[CategoryController::class,'create']);
 
-    Route::put('/',[CategoryController::class,'store']);
+    Route::put('/insert',[CategoryController::class,'store']);
 
     Route::delete('/{id}',[CategoryController::class,'destroy']);
 });
