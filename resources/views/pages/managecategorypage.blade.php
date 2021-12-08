@@ -49,11 +49,11 @@
                         <td class="item-action">
                             <div class="d-flex">
                                 <a href="/category/{{ $category->id }}" type="
-                                button" class="btn btn-warning">Update</a>
+                                button" class="btn btn-warning m-1">Update</a>
                                 <form action="/category/{{ $category->id }}" method="POST">
                                     @csrf
                                     @method('Delete')
-                                    <input type="submit" value="Delete" class="btn btn-danger">
+                                    <input type="submit" value="Delete" class="btn btn-danger m-1">
                                 </form>
                             </div>
                         </td>

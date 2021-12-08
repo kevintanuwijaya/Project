@@ -82,11 +82,11 @@
                     <td class="item-action">
                         <div class="d-flex">
                             <a href="/product/edit/{{ $product->id }}" type="
-                            button" class="btn btn-warning">Update</a>
+                            button" class="btn btn-warning m-1">Update</a>
                             <form action="/product/{{ $product->id }}" method="POST">
                                 @csrf
                                 @method("delete")
-                                <input type="submit" value="Delete" class="btn btn-danger">
+                                <input type="submit" value="Delete" class="btn btn-danger m-1">
                             </form>
                         </div>
                     </td>

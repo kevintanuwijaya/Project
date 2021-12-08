@@ -42,7 +42,7 @@
             <form method="POST" action="
             
                 @if ($category == null)
-                    /category 
+                    /category/insert
                 @else
                     /category/{{ $category->id }}
                 @endif
