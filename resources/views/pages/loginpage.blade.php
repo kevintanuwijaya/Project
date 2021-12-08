@@ -38,7 +38,7 @@
             <form action="/login" method="POST">
                 @csrf
                 <div class="form-floating mb-3">
-                    <input name="email" placeholder="Email" type="email" class="form-control" id="floatingEmail" aria-describedby="emailHelp" value="{{Cookie::get('email')}}">
+                    <input name="email" placeholder="Email" type="email" class="form-control" id="floatingEmail" aria-describedby="emailHelp">
                     <label for="floatingEmail">Email</label>
                     <div class="errorLabel">
                         @error('email')
@@ -49,7 +49,7 @@
                     </div>
                 </div>
                 <div class="form-floating mb-3">
-                    <input name="password" placeholder="Password" type="password" class="form-control" id="floatingPassword" value="{{Cookie::get('password')}}">
+                    <input name="password" placeholder="Password" type="password" class="form-control" id="floatingPassword">
                     <label for="floatingPassword">Password</label>
                     <div class="errorLabel">
                         @error('password')

@@ -92,11 +92,13 @@ class AuthController extends Controller
 
         Auth::logout();
         $request->session()->invalidate();
-
+        
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        Cookie::queue(Cookie::forget('email'));
+        Cookie::queue(Cookie::forget('password'));
 
+        return redirect('/');
     }
 
 }
