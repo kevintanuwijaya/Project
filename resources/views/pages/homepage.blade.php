@@ -17,7 +17,7 @@
 
         .card-img-top{
             height: 44vh;
-            width: 30vw;
+            width: 29vw;
         }
 
         .card{

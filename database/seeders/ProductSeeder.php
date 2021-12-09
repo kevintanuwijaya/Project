@@ -65,7 +65,7 @@ class ProductSeeder extends Seeder
                         OTS+
                         Infinity One Design'
                     ];
-        $picture = ['Bravia8K.png', 'TUFF15.png', 'ROGStrixG17.png', 'Iphone13Pro.png', 'OnePlus9.png', 'pixel5.png', 'samsung8K55TV.png', 'S21.png', 'ROGStrixSCARG15.png', 'samsung8K65TV.png'];
+        $picture = ['Bravia8K.jpg', 'TUFF15.jpg', 'ROGStrixG17.jpg', 'Iphone13Pro.jpg', 'OnePlus9.jpg', 'pixel5.jpg', 'samsung8K55TV.jpg', 'S21.jpg', 'ROGStrixSCARG15.jpg', 'samsung8K65TV.jpg'];
         $length = count($name);
         for($i=0; $i<$length; $i++){
             Product::create([
