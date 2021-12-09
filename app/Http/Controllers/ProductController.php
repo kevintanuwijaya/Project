@@ -52,8 +52,8 @@ class ProductController extends Controller
             'productname' => 'required|unique:products,name|min:5',
             'description' => 'required|min:50',
             'price' => 'required|integer|gt:0',
-            'category' => 'required',
-            'picture' => 'required|mimes:jpg,png'
+            'category' => 'required|gt:-1',
+            'picture' => 'required|mimes:jpg'
         ]);
 
         $file = $request->file('picture');
@@ -124,7 +124,7 @@ class ProductController extends Controller
 
 
             $request->validate([
-                'picture' => 'mimes:jpg,png'
+                'picture' => 'mimes:jpg'
             ]);
             
             Storage::delete('public/product-assets/'.$product->picture);

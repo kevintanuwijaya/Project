@@ -1,5 +1,4 @@
 @extends('layout')
-@section('title','Edit Category Page')
 @section('style')
     <style>
         .edit-category-page{
@@ -42,8 +41,10 @@
             <form method="POST" action="
             
                 @if ($category == null)
+                    @section('title','Add Category Page')
                     /category/insert
                 @else
+                    @section('title','Edit Category Page')
                     /category/{{ $category->id }}
                 @endif
 
@@ -55,7 +56,7 @@
                     @method('PATCH')
                 @endif
                 <div class="form-floating mb-3">
-                    <input name="name" placeholder="Category Name" type="text" id="floatingName" class="form-control" value="@if ($category != null){{ $category->name }}@endif"> 
+                    <input name="name" placeholder="Category Name" type="text" id="floatingName" class="form-control" value="@if($category != null && old('name')){{old('name')}}@else @if ($category != null && old('name') == null) {{ $category->name }} @else {{ old('name') }} @endif @endif"> 
                     <label for="floatingName">Category Name</label>
                     @error('name')
                         <span class="error-message">{{ $message }}</span>

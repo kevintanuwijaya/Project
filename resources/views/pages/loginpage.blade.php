@@ -63,6 +63,11 @@
                     <input name="remember" type="checkbox" class="form-check-input" id="exampleCheck1">
                     <label class="form-check-label" for="exampleCheck1">Remember Me</label>
                 </div>
+                @if (session()->has('errorLogin'))
+                    <span class="errorLabel">
+                        {{ session()->get('errorLogin') }}
+                    </span>
+                @endif
                 <div class="d-flex justify-content-end">
                     <button type="submit" class="btn btn-warning">Login</button>
                 </div>

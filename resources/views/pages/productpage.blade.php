@@ -1,5 +1,4 @@
 @extends('layout')
-@section('title','Edit Product Page')
 @section('style')
     <style>
         .add-title{
@@ -42,8 +41,10 @@
             <form method="POST" action="
 
                 @if ($product == null)
+                    @section('title','Add Product Page')
                     /product
                 @else
+                    @section('title','Edit Product Page')
                     /product/{{ $product->id }}
                 @endif
             " enctype="multipart/form-data">
@@ -56,7 +57,7 @@
 
                 <div class="form-floating mb-3">
                     <input name="productname" placeholder="Product Name" type="text" id="floatingProductName" class="form-control" 
-                    value="@if ($product!=null){{ $product->name }}@endif"> 
+                    value="@if($product!=null && old('productname')){{old('productname')}} @else @if ($product!=null && old('productname') == null){{$product->name}}@else{{old('productname')}} @endif @endif"> 
                     <label for="floatingProductName">Product Name</label>
                     @error('productname')
                         <div>
@@ -65,7 +66,7 @@
                     @enderror
                 </div>
                 <div class="form-floating mb-4">
-                    <textarea name="description" placeholder="Description" class="form-control" id="floatingDescription" rows="5">@if ($product!=null){{ $product->description }}@endif</textarea>
+                    <textarea name="description" placeholder="Description" class="form-control" id="floatingDescription" rows="5">@if ($product!=null && old('description')){{ old('description') }} @else @if ($product!=null && old('description')==null) {{ $product->description }} @else {{old('description')}}  @endif @endif</textarea>
                     <label for="floatingDescription">Description</label>
                     @error('description')
                         <div>
@@ -75,7 +76,7 @@
                 </div>
                 <div class="form-floating mb-3">
                     <input name="price" placeholder="Product Price" type="number" class="form-control" id="floatingPrice" 
-                    value="@if ($product!=null){{ $product->price }}@endif">
+                    value="@if($product!=null){{$product->price}}@endif">
                     <label for="floatingPrice">Product Price</label>
                     @error('price')
                         <div>
@@ -88,7 +89,7 @@
                     @if ($product != null)
                         <option value="{{ $product->category_id }}" selected>{{ $product->category->name }}</option>
                     @else
-                        <option selected>Choose one</option>
+                        <option selected value="-1">Choose one</option>
                     @endif
                     
                     @foreach ($categories as $category)
@@ -116,7 +117,7 @@
                 </div>
                 <div class="d-flex justify-content-end">
                     @if ($product != null)
-                        <button type="submit" class="btn btn-warning">Edit</button>
+                        <button type="submit" class="btn btn-warning">Save</button>
                     @else
                         <button type="submit" class="btn btn-warning">Insert</button>
                     @endif
